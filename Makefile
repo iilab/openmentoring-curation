@@ -7,10 +7,13 @@ help:
 	@echo "	make install			Installs latest GitBook and dependencies"
 	@echo ""
 
+modules:
+  npm install 
+
 content:
 	git clone https://github.com/iilab/openmentoring-content content
 
-prepare: content
+prepare: modules content
 	cd content
 	git pull
 	# TODO: clone all catalogue entries.
