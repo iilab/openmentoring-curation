@@ -1,12 +1,10 @@
+default: prepare generate
+
 help:
 	@echo "Commands:"
-	@echo "	make deploy				Deploys website to github pages"
-	@echo "	make build				Builds website"
-	@echo "	make validate			Builds books and validates for invalid HTML output"
+	@echo "	make 							Builds targets from source catalogue"
 	@echo "	make install			Installs latest GitBook and dependencies"
 	@echo ""
-
-default: prepare generate
 
 prepare:
 	git clone https://github.com/iilab/openmentoring-content content
@@ -17,7 +15,7 @@ generate:
 	metalsmith --config web/metalsmith.json
 	metalsmith --config print/metalsmith.json
 
-deploy: web print # mobile
+install: web print # mobile
 
 web:
 	rev=$(git rev-parse --short HEAD)
