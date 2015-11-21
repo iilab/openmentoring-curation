@@ -1,0 +1,30 @@
+{
+  "source": "content",
+  "destination": "web/build",
+  "plugins": {
+    "metalsmith-debug": {},
+    "metalsmith-ignore": [
+      ".git",
+      ".travis.yml",
+      "_config.yml",
+      "INTENTIONS.md",
+      "LICENSE",
+      "Makefile",
+      "README.md"
+    ],
+    "metalsmith-writemetadata": {},
+    "metalsmith-layouts": {
+      "engine": "handlebars",
+      "default": "layout.md",
+      "directory": "web"
+    },
+    "metalsmith-concat": {
+      "files": "styles/**/*.css",
+      "output": "styles/app.css"
+    },
+    "metalsmith-assets": {
+      "source": "web/src",
+      "directory": "web/build"
+    }
+  }
+}
