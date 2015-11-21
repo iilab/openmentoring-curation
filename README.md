@@ -12,3 +12,7 @@ The script uses ```curation.json``` to
  - print: pushes gitbook ready source site to openmentoring-print. The CI for open-mentoring will then create the PDF.
 
  - mobile: to do. Will generate the curation as StoryPath content packs to be used my openmentoring-mobile.
+
+# TODO
+
+ - Build each non master branch as a separate branch-name.openmentoring.io subsite.

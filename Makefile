@@ -8,7 +8,7 @@ help:
 	@echo ""
 
 modules:
-  npm install 
+	npm install 
 
 content:
 	git clone https://github.com/iilab/openmentoring-content content
