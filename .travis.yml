@@ -7,6 +7,7 @@ install:
   - rvm use "$RUBY_VERSION" --install --binary
   - nvm install "$NODE_VERSION"
   - npm install -g npm
+  - npm install -g metalsmith  
 script:
   - make
 after_success:
