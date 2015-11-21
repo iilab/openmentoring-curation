@@ -1,2 +1,14 @@
 # openmentoring-publication
+
 Prepares publication of curated content for mobile, web and print formats. 
+
+## What this does
+
+These scripts are meant to be triggered from a travis build of openmentoring-content or other upstream content updates.
+
+The script uses ```curation.json``` to 
+ - web: uses gitbook to generate and publishes to github pages (openmentoring-web). Should publish a static site generator ready source site instead (then pushed to our self-hosted dokku or something).
+
+ - print: pushes gitbook ready source site to openmentoring-print. The CI for open-mentoring will then create the PDF.
+
+ - mobile: to do. Will generate the curation as StoryPath content packs to be used my openmentoring-mobile.
