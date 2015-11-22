@@ -1,17 +1,27 @@
 # {{ title }}
-unit: {{ unit }}
-unittopic: {{ unittopic }}
-{{#each cards}}
-{{#is cardtopic "===" unittopic}}
-unittopic: {{ unittopic }}
-cardtopic: {{ cardtopic }}
-cardunit: {{ cardunit }}
-{{#each_when this "test" "test"}}
-cardunit: {{ cardunit }}
-{{#each this}}
-{{ contents }}
-# 
-{{/each}}
-{{/each_when}}
-{{/is}}
-{{/each}}
+{% for t in cards -%}
+    {%- if t.topic == topic -%}
+        {%- for u in t -%}
+            {%- if u.unit == unit -%}
+                {%- for grouper, list in u|groupby("type") -%}
+                    {% set done = false %}
+                    {%- for card in list -%}
+                        {%- if loop.length == 1 -%}
+                        {%- set done = true -%}
+{{ card.contents }}
+***
+                        {%- elif card.profile == profile and not done-%}
+                        {%- set done = true -%}
+{{ card.contents }}
+***
+                        {%- elif card.profile == "any" and not done -%}
+                        {%- set done = true -%}
+{{ card.contents }}
+***
+                        {%- endif -%}
+                    {%- endfor -%}
+                {%- endfor -%}
+            {%- endif -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endfor %}

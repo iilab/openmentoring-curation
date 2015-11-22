@@ -1,4 +1,4 @@
-{{#if title}}
+{% if title %}
 ## {{ title }}
-{{/if}}
+{% endif  %}
 {{ contents }}

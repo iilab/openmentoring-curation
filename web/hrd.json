@@ -3,7 +3,9 @@
   "destination": "web/build",
   "clean": false,
   "plugins": {
-    "metalsmith-env": {},
+    "metalsmith-metaobject": {
+      "profile" : "hrd"
+    },
     "metalsmith-ignore": [
       ".git/**",
       ".gitignore",
@@ -27,14 +29,13 @@
     },
     "metalsmith-debug": true,
     "metalsmith-filemetadata": [
+      {"pattern": "*/topics/*/*/*-*-hrd.md", "preserve": "true", "metadata": {"profile": "hrd"}},
       {"pattern": "*/topics/*/*/*-intro*.md", "preserve": "true", "metadata": {"type": "intro", "title": "Introduction"}},
       {"pattern": "*/topics/*/*/*-scenario*.md", "preserve": "true", "metadata": {"type": "scenario", "title": "Scenario"}},
       {"pattern": "*/topics/*/*/*-learn.md*", "preserve": "true", "metadata": {"type": "learn", "title": "Learn"}},
       {"pattern": "*/topics/*/*/*-test*.md", "preserve": "true", "metadata": {"type": "test", "title": "Test"}},
       {"pattern": "*/topics/*/*/*-next*.md", "preserve": "true", "metadata": {"type": "next", "title": "Next"}},
-      {"pattern": "*/topics/*/*/*-*.md", "metadata": {"profile": "any", "layout": "card.md"}},
-      {"pattern": "*/topics/*/*/*-*-hrd.md", "metadata": {"profile": "hrd"}},
-      {"pattern": "*/topics/*/*/*-*-journo.md", "metadata": {"profile": "journo"}},
+      {"pattern": "*/topics/*/*/*-*.md", "metadata": {"layout": "card.md"}},
       {"pattern": "*/topics/*/*/index.md", "metadata": {"layout": "unit.md"}},
       {"pattern": "*/topics/*/index.md", "metadata": {"layout": "topic.md"}}
     ],
@@ -44,7 +45,7 @@
       "directory": "web/layouts"       
     },
     "metalsmith-assets": {
-      "source": "web/src/journo",
+      "source": "web/src/hrd",
       "directory": "web/build"
     }
   }

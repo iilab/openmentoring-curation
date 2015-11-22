@@ -21,15 +21,19 @@ prepare: modules content
 	# TODO: clone all catalogue entries.
 	# TODO: check news/incident feeds.
 
-serve: 
+gitbook: web/build/_book/gitbook
+	cd web/build; gitbook install .
+
+serve: gitbook
 	# metalsmith --config mobile/metalsmith.json
-	debug=metalsmith:* metalsmith --config web/metalsmith.json
-	debug=metalsmith:* metalsmith --config print/metalsmith.json
-	cd web/build; gitbook install .; gitbook serve .
+	DEBUG=metalsmith:* metalsmith --config web/metalsmith.json
+	DEBUG=metalsmith:* metalsmith --config print/metalsmith.json
+	cd web/build; gitbook serve .
 
 generate: 
 	# metalsmith --config mobile/metalsmith.json
-	metalsmith --config web/metalsmith.json
+	profile=journo metalsmith --config web/metalsmith.json
+	profile=hrd metalsmith --config web/metalsmith.json
 	metalsmith --config print/metalsmith.json
 
 
