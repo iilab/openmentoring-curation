@@ -18,17 +18,17 @@
         "pattern": "*/topics/:cardtopic/:cardunit/*.md"
       },
       "units": {
-        "pattern": "*/topics/:unittopic/:unit/0-unit.md"
+        "pattern": "*/topics/:unittopic/:unit/index.md"
       },
       "topics": {
-        "pattern": "*/topics/:topic/topic.md"
+        "pattern": "*/topics/:topic/index.md"
       }
     },
     "metalsmith-debug": true,
     "metalsmith-filemetadata": [
       {"pattern": "*/topics/*/*/*.md", "metadata": {"layout": "card.md"}},
-      {"pattern": "*/topics/*/*/0-unit.md", "metadata": {"layout": "unit.md"}},
-      {"pattern": "*/topics/*/topic.md", "metadata": {"layout": "topic.md"}}
+      {"pattern": "*/topics/*/*/index.md", "metadata": {"layout": "unit.md"}},
+      {"pattern": "*/topics/*/index.md", "metadata": {"layout": "topic.md"}}
     ],
     "metalsmith-register-helpers": {
       "directory": "web/helpers"

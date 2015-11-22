@@ -1,5 +1,4 @@
-Hi I'm a card!
 {{#if title}}
-# {{ title }}
+## {{ title }}
 {{/if}}
 {{ contents }}
