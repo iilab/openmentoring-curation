@@ -47,7 +47,7 @@
       "directory": "web/layouts"       
     },
     "metalsmith-assets": {
-      "source": "web/src/journo",
+      "source": "web/src",
       "directory": "web/build"
     }
   }
