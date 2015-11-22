@@ -2,4 +2,5 @@ content
 mobile/build
 web/build
 print/build
-node_modules
+**/node_modules
+**/_book

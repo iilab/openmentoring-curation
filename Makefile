@@ -1,3 +1,5 @@
+REV:=$(shell git rev-parse --short HEAD)
+
 default: prepare generate
 
 help:
@@ -29,33 +31,30 @@ generate:
 	metalsmith --config web/metalsmith.json
 	metalsmith --config print/metalsmith.json
 
-install: web print # mobile
 
-web:
-	rev=$(git rev-parse --short HEAD)
-	cd web/build
-	git init
-	git config user.name "Travis CI"
-	git config user.email "ci@iilab.org"
-	git remote add upstream "https://$GH_TOKEN@github.com/iilab/openmentoring-web.git"
-	git fetch upstream
-	git reset upstream
-	echo "openmentoring.io" > CNAME
-	cp ../*.* .
-	git add -A .
-	git commit -m "Rebuilt website source at ${rev}"
+deploy-web: 
+	cd web/build; \
+	git init; \
+	git config --local user.name "Travis CI"; \
+	git config --local user.email "ci@iilab.org"; \
+	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-web.git"; \
+	git fetch upstream; \
+ 	git reset upstream/master; \
+	git add -A .; \
+	git commit -m "Rebuilt website source at ${REV}"; \
 	git push -q upstream HEAD:master
 
-print:
-	rev=$(git rev-parse --short HEAD)
-	cd print/build
-	git init
-	git config user.name "Travis CI"
-	git config user.email "ci@iilab.org"
-	git remote add upstream "https://$GH_TOKEN@github.com/iilab/openmentoring-print.git"
-	git fetch upstream
-	git reset upstream
-	touch .
-	git add -A .
-	git commit -m "Rebuilt book source at ${rev}"
+deploy-print: 
+	cd print/build; \
+	git init; \
+	git config --local user.name "Travis CI"; \
+	git config --local user.email "ci@iilab.org"; \
+	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-print.git"; \
+	git fetch upstream; \
+	git reset upstream/master; \
+	touch .; \
+	git add -A .; \
+	git commit -m "Rebuilt book source at ${REV}"; \
 	git push -q upstream HEAD:master
+
+install: deploy-web deploy-print
