@@ -32,8 +32,8 @@ serve: gitbook
 
 generate: 
 	# metalsmith --config mobile/metalsmith.json
+	# profile=hrd metalsmith --config web/metalsmith.json
 	profile=journo metalsmith --config web/metalsmith.json
-	profile=hrd metalsmith --config web/metalsmith.json
 	metalsmith --config print/metalsmith.json
 
 
