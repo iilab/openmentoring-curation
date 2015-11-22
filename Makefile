@@ -34,7 +34,7 @@ generate:
 	# metalsmith --config mobile/metalsmith.json
 	# profile=hrd metalsmith --config web/metalsmith.json
 	profile=journo metalsmith --config web/metalsmith.json
-	metalsmith --config print/metalsmith.json
+	#metalsmith --config print/metalsmith.json
 
 
 deploy-web: 
@@ -62,4 +62,5 @@ deploy-print:
 	git commit -m "Rebuilt book source at ${REV}"; \
 	git push -q upstream HEAD:master
 
-install: deploy-web deploy-print
+install: deploy-web 
+	#deploy-print
