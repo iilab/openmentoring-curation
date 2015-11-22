@@ -1,6 +1,17 @@
-# openmentoring-publication
+# openmentoring-curation
 
 Prepares publication of curated content for mobile, web and print formats. 
+
+Upstream
+[![Build Status](https://travis-ci.org/iilab/openmentoring-content.svg)](https://travis-ci.org/iilab/openmentoring-content)
+
+Curation
+[![Build Status](https://travis-ci.org/iilab/openmentoring-curation.svg)](https://travis-ci.org/iilab/openmentoring-curation)
+
+Publication
+  - Web [![Build Status](https://travis-ci.org/iilab/openmentoring-web.svg)](https://travis-ci.org/iilab/openmentoring-web)
+  - Print
+  - Mobile
 
 ## What this does
 

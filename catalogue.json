@@ -4,7 +4,10 @@
       "open-mentoring": {
         "type": "git",
         "format": "markdown+yaml",
-        "url": "https://github.com/iilab/openmentoring-content"
+        "url": "https://github.com/iilab/openmentoring-content",
+        "metadata" : {
+          "audience-type": ""
+        }
       }
     }
   ]
