@@ -1,10 +1,11 @@
 {
   "source": "content",
   "destination": "web/build",
+  "clean": false,
   "plugins": {
-    "metalsmith-debug": {},
     "metalsmith-ignore": [
       ".git/**",
+      ".gitignore",
       ".travis.yml",
       "_config.yml",
       "INTENTIONS.md",
@@ -12,15 +13,30 @@
       "Makefile",
       "README.md"
     ],
-    "metalsmith-writemetadata": {},
+    "metalsmith-collections": {
+      "cards": {
+        "pattern": "*/topics/:cardtopic/:cardunit/*.md"
+      },
+      "units": {
+        "pattern": "*/topics/:unittopic/:unit/0-unit.md"
+      },
+      "topics": {
+        "pattern": "*/topics/:topic/topic.md"
+      }
+    },
+    "metalsmith-debug": true,
+    "metalsmith-filemetadata": [
+      {"pattern": "*/topics/*/*/*.md", "metadata": {"layout": "card.md"}},
+      {"pattern": "*/topics/*/*/0-unit.md", "metadata": {"layout": "unit.md"}},
+      {"pattern": "*/topics/*/topic.md", "metadata": {"layout": "topic.md"}}
+    ],
+    "metalsmith-register-helpers": {
+      "directory": "web/helpers"
+    },
     "metalsmith-layouts": {
       "engine": "handlebars",
-      "default": "layout.md",
-      "directory": "web"
-    },
-    "metalsmith-concat": {
-      "files": "styles/**/*.css",
-      "output": "styles/app.css"
+      "default": "default.md",
+      "directory": "web/layouts"       
     },
     "metalsmith-assets": {
       "source": "web/src",

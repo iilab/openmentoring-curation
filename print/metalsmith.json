@@ -14,7 +14,7 @@
     "metalsmith-layouts": {
       "engine": "handlebars",
       "default": "layout.md",
-      "directory": "web"
+      "directory": "print"
     },
     "metalsmith-assets": {
       "source": "print/src",

@@ -16,7 +16,7 @@ content:
 	git clone https://github.com/iilab/openmentoring-content content
 
 prepare: modules content
-	cd content
+	cd content;	\
 	git pull
 	# TODO: clone all catalogue entries.
 	# TODO: check news/incident feeds.
