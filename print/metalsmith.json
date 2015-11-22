@@ -12,7 +12,7 @@
       "README.md"
     ],
     "metalsmith-layouts": {
-      "engine": "handlebars",
+      "engine": "nunjucks",
       "default": "layout.md",
       "directory": "print"
     },

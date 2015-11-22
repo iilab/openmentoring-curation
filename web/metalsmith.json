@@ -14,6 +14,9 @@
       "Makefile",
       "README.md"
     ],
+    "metalsmith-paths": {
+      "property": "paths"
+    },
     "metalsmith-collections": {
       "cards": {
         "pattern": "*/topics/:topic/:unit/*.md"
@@ -44,7 +47,7 @@
       "directory": "web/layouts"       
     },
     "metalsmith-assets": {
-      "source": "web/src",
+      "source": "web/src/journo",
       "directory": "web/build"
     }
   }

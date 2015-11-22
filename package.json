@@ -21,6 +21,7 @@
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.4.2",
     "metalsmith-metaobject": "^0.1.0",
+    "metalsmith-paths": "^2.1.1",
     "metalsmith-register-helpers": "^0.1.2",
     "metalsmith-writemetadata": "^0.4.5",
     "nunjucks": "^2.1.0"
