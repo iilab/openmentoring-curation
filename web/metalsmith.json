@@ -4,7 +4,7 @@
   "plugins": {
     "metalsmith-debug": {},
     "metalsmith-ignore": [
-      ".git",
+      ".git/**",
       ".travis.yml",
       "_config.yml",
       "INTENTIONS.md",

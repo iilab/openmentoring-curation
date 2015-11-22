@@ -5,7 +5,7 @@ default: prepare generate
 help:
 	@echo "Commands:"
 	@echo "	make 							Builds targets from source catalogue"
-	@echo "	make debug 				Builds targets with debug output from source catalogue"
+	@echo "	make serve 				Builds targets with debug output and serve web build"
 	@echo "	make install			Installs latest GitBook and dependencies"
 	@echo ""
 
@@ -21,10 +21,11 @@ prepare: modules content
 	# TODO: clone all catalogue entries.
 	# TODO: check news/incident feeds.
 
-debug: 
+serve: 
 	# metalsmith --config mobile/metalsmith.json
 	debug=metalsmith:* metalsmith --config web/metalsmith.json
 	debug=metalsmith:* metalsmith --config print/metalsmith.json
+	cd web/build; gitbook install .; gitbook serve .
 
 generate: 
 	# metalsmith --config mobile/metalsmith.json

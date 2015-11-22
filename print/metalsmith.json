@@ -2,5 +2,23 @@
   "source": "content",
   "destination": "print/build",
   "plugins": {
+    "metalsmith-ignore": [
+      ".git/**",
+      ".travis.yml",
+      "_config.yml",
+      "INTENTIONS.md",
+      "LICENSE",
+      "Makefile",
+      "README.md"
+    ],
+    "metalsmith-layouts": {
+      "engine": "handlebars",
+      "default": "layout.md",
+      "directory": "web"
+    },
+    "metalsmith-assets": {
+      "source": "print/src",
+      "directory": "print/build"
+    }
   }
 }
