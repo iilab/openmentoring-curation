@@ -45,10 +45,13 @@ generate:
 	mv web/build-citizen web/build/citizen
 	cp -R web/src/citizen/* web/build/citizen
 	cp web/src/book.json web/build/citizen
+	cp web/src/README.md web/build/citizen
 	cp -R web/src/journo/* web/build/journo
 	cp web/src/book.json web/build/journo
+	cp web/src/README.md web/build/journo
 	cp -R web/src/hrd/* web/build/hrd
 	cp web/src/book.json web/build/hrd
+	cp web/src/README.md web/build/hrd
 	cp web/src/.nojekyll web/build
 	cp web/src/.travis.yml web/build
 	cp web/src/Makefile web/build
