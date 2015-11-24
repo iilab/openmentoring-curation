@@ -43,11 +43,11 @@ generate:
 	mv web/build-journo web/build/journo
 	mv web/build-hrd web/build/hrd
 	mv web/build-citizen web/build/citizen
-	cp -R web/src/citizen web/build/citizen
+	cp -R web/src/citizen/* web/build/citizen
 	cp web/src/book.json web/build/citizen
-	cp -R web/src/journo web/build/journo
+	cp -R web/src/journo/* web/build/journo
 	cp web/src/book.json web/build/journo
-	cp -R web/src/hrd web/build/hrd
+	cp -R web/src/hrd/* web/build/hrd
 	cp web/src/book.json web/build/hrd
 	cp web/src/.nojekyll web/build
 	cp web/src/.travis.yml web/build
