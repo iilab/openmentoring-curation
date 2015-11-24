@@ -34,7 +34,17 @@ generate:
 	# metalsmith --config mobile/metalsmith.json
 	# profile=hrd metalsmith --config web/metalsmith.json
 	profile=journo metalsmith --config web/metalsmith.json
-	#metalsmith --config print/metalsmith.json
+	mv web/build web/build-journo
+	profile=hrd metalsmith --config web/metalsmith.json
+	mv web/build web/build-hrd
+	metalsmith --config web/metalsmith.json
+	mv web/build web/build-citizen
+	mkdir web/build
+	mv web/build-journo web/build/journo
+	mv web/build-hrd web/build/hrd
+	mv web/build-citizen web/build/citizen
+	cp -R web/src/*.* web/build/
+	profile=journo metalsmith --config print/metalsmith.json
 
 
 deploy-web: 
@@ -62,5 +72,4 @@ deploy-print:
 	git commit -m "Rebuilt book source at ${REV}"; \
 	git push -q upstream HEAD:master
 
-install: deploy-web 
-	#deploy-print
+install: deploy-web deploy-print

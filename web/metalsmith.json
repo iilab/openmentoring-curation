@@ -45,10 +45,6 @@
       "engine": "nunjucks",
       "default": "default.md",
       "directory": "web/layouts"       
-    },
-    "metalsmith-assets": {
-      "source": "web/src",
-      "directory": "web/build"
     }
   }
 }
