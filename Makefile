@@ -63,7 +63,7 @@ generate:
 
 deploy-web: 
 	@cd web/build; \
-	@git init; \
+	git init; \
 	git config --local user.name "Travis CI"; \
 	git config --local user.email "ci@iilab.org"; \
 	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-web.git"; \
@@ -75,7 +75,7 @@ deploy-web:
 
 deploy-print: 
 	@cd print/build; \
-	@git init; \
+	git init; \
 	git config --local user.name "Travis CI"; \
 	git config --local user.email "ci@iilab.org"; \
 	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-print.git"; \
