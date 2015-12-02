@@ -24,11 +24,15 @@ prepare: modules content
 gitbook: web/build/_book/gitbook
 
 serve: generate
-	cd web/build; gitbook install .
 	# metalsmith --config mobile/metalsmith.json
-	DEBUG=metalsmith:* metalsmith --config web/metalsmith.json
-	DEBUG=metalsmith:* metalsmith --config print/metalsmith.json
-	cd web/build; gitbook serve .
+	cd web/build/citizen && gitbook install .
+	cd web/build/citizen && gitbook build .
+	cd web/build/journo && gitbook install .
+	cd web/build/journo && gitbook build .
+	cd web/build/hrd && gitbook install .
+	cd web/build/hrd && gitbook build .
+	@mv web/build/citizen/_book web/build && mv web/build/journo/_book web/build/_book/journo && mv web/build/hrd/_book web/build/_book/hrd;
+	cd web/build; http-server .
 
 generate: 
 	# metalsmith --config mobile/metalsmith.json
@@ -59,7 +63,6 @@ generate:
 	cp web/src/versions web/build
 	cp web/src/README.md web/build
 	profile=journo metalsmith --config print/metalsmith.json
-
 
 deploy-web: 
 	@cd web/build; \
