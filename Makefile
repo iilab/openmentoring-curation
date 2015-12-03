@@ -35,8 +35,10 @@ serve: generate
 	cd web/build; http-server .
 
 generate: 
-	# metalsmith --config mobile/metalsmith.json
+	# Metalsmith build for mobile content (for now only index.json)
+	metalsmith --config mobile/metalsmith.json
 	# profile=hrd metalsmith --config web/metalsmith.json
+  # Metalsmith build for different web site profiles (building as gitbook source)
 	profile=journo metalsmith --config web/metalsmith.json
 	mv web/build web/build-journo
 	profile=hrd metalsmith --config web/metalsmith.json
@@ -47,6 +49,7 @@ generate:
 	mv web/build-journo web/build/journo
 	mv web/build-hrd web/build/hrd
 	mv web/build-citizen web/build/citizen
+	# TODO: move this to metalsmith build somehow
 	cp -R web/src/citizen/* web/build/citizen
 	cp web/src/book.json web/build/citizen
 	cp web/src/LANGS.md web/build/citizen
@@ -62,6 +65,7 @@ generate:
 	cp web/src/LANGS.md web/build
 	cp web/src/versions web/build
 	cp web/src/README.md web/build
+	# TODO: Metalsmith build for print version.
 	profile=journo metalsmith --config print/metalsmith.json
 
 deploy-web: 
@@ -89,4 +93,16 @@ deploy-print:
 	git commit -m "Rebuilt book source at ${REV}"; \
 	git push -q upstream HEAD:master
 
-install: deploy-web deploy-print
+deploy-mobile: 
+	@cd web/build; \
+	git init; \
+	git config --local user.name "Travis CI"; \
+	git config --local user.email "ci@iilab.org"; \
+	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-web.git"; \
+	git fetch upstream && git reset upstream/gh-pages; \
+	copy ../../mobile/build/index.json .; \
+	git add -A .; \
+	git commit -m "Rebuilt mobile index at ${REV}"; \
+	git push -q upstream HEAD:gh-pages
+
+install: deploy-web deploy-print deploy-mobile
