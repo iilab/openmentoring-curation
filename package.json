@@ -20,6 +20,7 @@
     "metalsmith-debug": "0.0.2",
     "metalsmith-env": "^2.0.0",
     "metalsmith-filemetadata": "iilab/metalsmith-filemetadata#merge",
+    "metalsmith-generate": "iilab/metalsmith-generate",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.4.2",
     "metalsmith-metaobject": "^0.1.0",
