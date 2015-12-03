@@ -76,6 +76,7 @@ deploy-web:
 	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-web.git"; \
 	git fetch upstream; \
  	git reset upstream/master; \
+	touch .; \
 	git add -A .; \
 	git commit -m "Rebuilt website source at ${REV}"; \
 	git push -q upstream HEAD:master
@@ -106,4 +107,4 @@ deploy-mobile:
 	git commit -m "Rebuilt mobile index at ${REV}"; \
 	git push -q upstream HEAD:gh-pages
 
-install: deploy-web deploy-print deploy-mobile
+install: deploy-web deploy-print

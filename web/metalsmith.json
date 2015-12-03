@@ -20,6 +20,8 @@
     },
     "metalsmith-generate": [
       { "path": "index.json", "metadata": { "layout": "index.json" } },
+      { "path": "elements.csv", "metadata": { "layout": "elements.csv" } },
+      { "path": "connections.csv", "metadata": { "layout": "connections.csv" } },
       { "path": "en/SUMMARY.md", "metadata": { "layout": "summary.md" } }
     ],
     "metalsmith-collections": {
