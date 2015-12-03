@@ -32,7 +32,7 @@ serve: generate
 	cd web/build/hrd && gitbook install .
 	cd web/build/hrd && gitbook build .
 	@mv web/build/citizen/_book web/build && mv web/build/journo/_book web/build/_book/journo && mv web/build/hrd/_book web/build/_book/hrd;
-	cd web/build; http-server .
+	cd web/build/_book; http-server .
 
 generate: 
 	# Metalsmith build for mobile content (for now only index.json)

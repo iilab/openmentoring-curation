@@ -18,6 +18,9 @@
     "metalsmith-paths": {
       "property": "paths"
     },
+    "metalsmith-generate": [
+      { "path": "index.json", "metadata": { "layout": "index.json" } }
+    ],
     "metalsmith-collections": {
       "cards": {
         "pattern": ":lang/topics/:topic/:unit/*-*.md"
@@ -47,12 +50,11 @@
       {"pattern": "*/topics/*/*/*-*-identity*.md", "metadata": {"array": "true", "protect": "identity"}},
       {"pattern": "*/topics/*/*/*-*-targeting*.md", "metadata": {"array": "true", "protect": "targeting"}},
       {"pattern": "*/topics/*/*/*-*-android*.md", "metadata": {"array": "true", "platform": "android"}},
-      {"pattern": "*/topics/*/*/*-*-windows*.md", "metadata": {"array": "true", "platform": "windows"}},
-      {"pattern": "index.json", "metadata": {"layout": "index.json"}}
+      {"pattern": "*/topics/*/*/*-*-windows*.md", "metadata": {"array": "true", "platform": "windows"}}
     ],
     "metalsmith-collection-metadata": [
-      {"action": "merge", "source": [ "topics", "units", "cards" ], "target": "tree"},
-      {"action": "up", "source": "tree", "fields": [ "protect", "profile", "platform"] }
+      {"action": "merge", "source": [ "topics", "units", "cards" ], "target": "tree", "ignore": [ "contents", "stats", "previous", "next", "mode", "collection" ]},
+      {"action": "up", "source": "tree", "fields": [ "protect", "profile", "platform"], "ignore": [ "contents", "stats", "previous", "next", "mode", "collection" ]}
     ],
     "metalsmith-debug": {},
     "metalsmith-layouts": {
