@@ -94,13 +94,14 @@ deploy-print:
 	git push -q upstream HEAD:master
 
 deploy-mobile: 
-	@cd web/build; \
-	git init; \
+	@cd mobile/build; \
+	git clone "https://github.com/iilab/openmentoring-web.git" web; \
+	cd web; \
 	git config --local user.name "Travis CI"; \
 	git config --local user.email "ci@iilab.org"; \
 	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-web.git"; \
-	git fetch upstream && git reset upstream/gh-pages; \
-	copy ../../mobile/build/index.json .; \
+	git checkout gh-pages; \
+	cp ../../../mobile/build/index.json .; \
 	git add -A .; \
 	git commit -m "Rebuilt mobile index at ${REV}"; \
 	git push -q upstream HEAD:gh-pages
