@@ -72,8 +72,9 @@ SUBDIRS := $(wildcard mobile/build/*/topics/*)
 ZIPS := $(addsuffix .zip,$(patsubst /,,$(SUBDIRS)))
 
 $(ZIPS) : %.zip : | %
-	zip -r $@ $*/*
-	rm -rf $*
+	cd $(dir $*); \
+	zip -r $(subst $(dir $*),,$@) $(subst $(dir $*),,$*/*); \
+	rm -rf $(subst $(dir $*),,$*/*)
 
 dist: $(ZIPS)
 
