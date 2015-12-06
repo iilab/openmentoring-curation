@@ -10,6 +10,7 @@
       ".travis.yml",
       "_config.yml",
       "INTENTIONS.md",
+      "MODEL.md",
       "LICENSE",
       "Makefile",
       "README.md"
@@ -24,6 +25,9 @@
       { "path": "connections.csv", "metadata": { "layout": "connections.csv" } },
       { "path": "en/SUMMARY.md", "metadata": { "layout": "summary.md" } }
     ],
+    "metalsmith-remove": [
+      {"pattern": "*/topics/_*/**"}
+    ],
     "metalsmith-collections": {
       "cards": {
         "pattern": ":lang/topics/:topic/:unit/*-*.md"
@@ -36,7 +40,7 @@
       }
     },
     "metalsmith-copy": {
-      "pattern": "*/topics/*/index.md",
+      "pattern": "*/topics/*/*/index.md",
       "extension": ".json"
     },
     "metalsmith-filemetadata": [
@@ -50,7 +54,7 @@
       {"pattern": "*/topics/*/*/*-next*.md", "preserve": "true", "metadata": {"container": "stack", "type": "card", "sub-type": "next", "title": "Next"}},
       {"pattern": "*/topics/*/*/index.md", "preserve": "true", "metadata": {"layout": "unit.md", "container": "unit", "type": "index"}},
       {"pattern": "*/topics/*/index.md", "preserve": "true", "metadata": {"layout": "topic.md", "container": "topic", "type": "index"}},
-      {"pattern": "*/topics/*/index.json", "preserve": "true", "metadata": {"layout": "unit.json"}},
+      {"pattern": "*/topics/*/*/index.json", "preserve": "true", "metadata": {"layout": "unit.json"}},
       {"pattern": "*/topics/*/*/*-*.md", "metadata": {"layout": "card.md", "profile": [ ""] }},
       {"pattern": "*/topics/*/*/*-*-hrd.md", "metadata": {"profile": [ "hrd" ] }},
       {"pattern": "*/topics/*/*/*-*-journo.md", "metadata": {"profile": [ "journo" ] }},
@@ -80,8 +84,8 @@
       "default": "default.md",
       "directory": "web/layouts"       
     },
-    "metalsmith-gzip": {
-      "src": [ "*/topics/*/index.json"]
+    "metalsmith-zip": {
+      "src": [ "*/topics/*"]
     }
   }
 }
