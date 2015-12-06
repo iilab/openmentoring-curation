@@ -78,6 +78,9 @@
       "directory": "mobile/layouts"       
     },
     "metalsmith-remove": [
+      {"pattern": "*/news/**"},
+      {"pattern": "*/resources/**"},
+      {"pattern": "*/topics/_*/**"},
       {"pattern": "*/topics/_*/**"},
       {"pattern": "*/topics/*/*/*-*.md"},
       {"pattern": "*/topics/*/*/*-*.html"},

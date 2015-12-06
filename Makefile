@@ -99,21 +99,22 @@ ZIPS := $(addsuffix .zip,$(patsubst /,,$(SUBDIRS)))
 
 $(ZIPS) : %.zip : | %
 	zip -r $@ $*/*
+	rm -rf $*
 
 dist: $(ZIPS)
 
 deploy-mobile: dist
 	git clone "https://github.com/iilab/openmentoring-web.git" mobile/build-web; \
-	cp -R mobile/build/* mobile/build-web/; \
+	cp -R mobile/build mobile/build-web/dist; \
 	@cd mobile/build-web; \
 	git config --local user.name "Travis CI"; \
 	git config --local user.email "ci@iilab.org"; \
 	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-web.git"; \
 	git fetch upstream; \
-	git reset upstream/gh-pages; \
+	git reset upstream/master; \
 	touch .; \
 	git add -A .; \
 	git commit -m "Rebuilt mobile index at ${REV}"; \
-	git push -q upstream HEAD:gh-pages
+	git push -q upstream HEAD:master
 
 install: deploy-web deploy-print deploy-mobile
