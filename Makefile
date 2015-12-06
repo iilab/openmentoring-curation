@@ -94,15 +94,24 @@ deploy-print:
 	git commit -m "Rebuilt book source at ${REV}"; \
 	git push -q upstream HEAD:master
 
-deploy-mobile: 
-	@cd mobile/build; \
-	git clone "https://github.com/iilab/openmentoring-web.git" web; \
-	cd web; \
+SUBDIRS := $(wildcard mobile/build/*/topics/*)
+ZIPS := $(addsuffix .zip,$(patsubst /,,$(SUBDIRS)))
+
+$(ZIPS) : %.zip : | %
+	zip -r $@ $*/*
+
+dist: $(ZIPS)
+
+deploy-mobile: dist
+	git clone "https://github.com/iilab/openmentoring-web.git" mobile/build-web; \
+	cp -R mobile/build/* mobile/build-web/; \
+	@cd mobile/build-web; \
 	git config --local user.name "Travis CI"; \
 	git config --local user.email "ci@iilab.org"; \
 	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-web.git"; \
-	git checkout gh-pages; \
-	cp ../../../mobile/build/index.json .; \
+	git fetch upstream; \
+	git reset upstream/gh-pages; \
+	touch .; \
 	git add -A .; \
 	git commit -m "Rebuilt mobile index at ${REV}"; \
 	git push -q upstream HEAD:gh-pages

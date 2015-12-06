@@ -79,13 +79,11 @@
     },
     "metalsmith-remove": [
       {"pattern": "*/topics/_*/**"},
-      {"pattern": "*/topics/*/*/*-*.*"},
+      {"pattern": "*/topics/*/*/*-*.md"},
+      {"pattern": "*/topics/*/*/*-*.html"},
       {"pattern": "*/topics/*/*/*.md"},
       {"pattern": "*/topics/*/*.md"}
     ],
-    "metalsmith-debug": true,
-    "metalsmith-zip": {
-      "src": [ "*/topics/*"]
-    }
+    "metalsmith-debug": true
   }
 }
