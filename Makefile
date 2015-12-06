@@ -65,9 +65,6 @@ generate:
 	cp web/src/LANGS.md web/build
 	cp web/src/versions web/build
 	cp web/src/README.md web/build
-	# Copy mobile build with zipped topics to web source
-	mkdir -p web/build/dist
-	cp -R mobile/build/* web/build/dist 
 	# TODO: Metalsmith build for print version.
 	profile=journo metalsmith --config print/metalsmith.json
 
@@ -81,7 +78,10 @@ $(ZIPS) : %.zip : | %
 dist: $(ZIPS)
 
 deploy-web: dist
-	@cd web/build; \
+	# Copy mobile build with zipped topics to web source
+	@mkdir -p web/build/dist; \
+	cp -R mobile/build/* web/build/dist; \
+	cd web/build; \
 	git init; \
 	git config --local user.name "Travis CI"; \
 	git config --local user.email "ci@iilab.org"; \
