@@ -116,4 +116,4 @@ deploy-mobile: dist
 	git commit -m "Rebuilt mobile index at ${REV}"; \
 	git push -q upstream HEAD:gh-pages
 
-install: deploy-web deploy-print
+install: deploy-web deploy-print deploy-mobile
