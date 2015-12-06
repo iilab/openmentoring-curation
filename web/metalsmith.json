@@ -83,9 +83,6 @@
       "engine": "nunjucks",
       "default": "default.md",
       "directory": "web/layouts"       
-    },
-    "metalsmith-zip": {
-      "src": [ "*/topics/*"]
     }
   }
 }
