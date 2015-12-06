@@ -1,4 +1,2 @@
-{% if title %}
-## {{ title }}
-{% endif  %}
-{{ contents }}
+{% if title %}## {{ title }}{% endif  %}
+{{ contents|safe }}

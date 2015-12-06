@@ -9,15 +9,15 @@
                     {%- for card in list -%}
                         {%- if loop.length == 1 -%}
                         {%- set done = true -%}
-{{ card.contents }}
+{{ card.contents | safe }}
 ***
                         {%- elif card.profile == profile and not done-%}
                         {%- set done = true -%}
-{{ card.contents }}
+{{ card.contents | safe }}
 ***
                         {%- elif not card.profile and not done -%}
                         {%- set done = true -%}
-{{ card.contents }}
+{{ card.contents | safe }}
 ***
                         {%- endif -%}
                     {%- endfor -%}

@@ -22,7 +22,7 @@
 {%- endfor -%}
       ],
       "updatedAt": "2015-11-26T00:00:00.000Z",
-      "downloadUrl": "https://openmentoring.io/dist/{{t.topic}}.zip"
+      "downloadUrl": "http://openmentoring.io/{{t.lang}}/topics/{{t.topic}}/index.json.gz"
     }
   ,
     {% endif -%}{%- endfor -%}
@@ -51,7 +51,7 @@
         {%- endfor -%}
       ],
       "updatedAt": "2015-11-26T00:00:00.000Z",
-      "downloadUrl": "https://openmentoring.io/dist/{{u.topic}}.zip"
+      "downloadUrl": "http://openmentoring.io/{{u.lang}}/topics/{{u.topic}}/index.json.gz"
     }
   {% endif -%}{%- endfor -%}
 {%- endif -%}{%- endfor -%}
