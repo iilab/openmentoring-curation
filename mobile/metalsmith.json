@@ -33,6 +33,7 @@
         "pattern": ":lang/topics/:topic/index.md"
       }
     },
+    "metalsmith-debug": true,
     "metalsmith-copy": {
       "pattern": "*/topics/*/*/index.md",
       "extension": ".json"
@@ -81,12 +82,10 @@
       {"pattern": "*/news/**"},
       {"pattern": "*/resources/**"},
       {"pattern": "*/topics/_*/**"},
-      {"pattern": "*/topics/_*/**"},
       {"pattern": "*/topics/*/*/*-*.md"},
       {"pattern": "*/topics/*/*/*-*.html"},
       {"pattern": "*/topics/*/*/*.md"},
       {"pattern": "*/topics/*/*.md"}
-    ],
-    "metalsmith-debug": true
+    ]
   }
 }

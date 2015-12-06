@@ -2,7 +2,7 @@
   "updatedAt": "{{date}}",
   "items": [
     {% for lang, l in collections.tree -%}
-    {%- for topic, t in l -%}{%- if t.topic -%}
+    {%- for topic, t in l -%}{%- if t.topic -%}{%- if t.topic != "_topic" -%}
     {
       "slug": "{{ t.topic }}",
       "type": "topic",
@@ -25,11 +25,11 @@
       "downloadUrl": "http://openmentoring.io/{{t.lang}}/topics/{{t.topic}}.zip"
     }
   ,
-    {% endif -%}{%- endfor -%}
+    {% endif %}{% endif %}{%- endfor -%}
   {%- endfor -%}
 {%- set comma = joiner() -%}
 {%- for lang, l in collections.tree -%}
-  {%- for topic, t in l -%}{%- if t.topic -%}
+  {%- for topic, t in l -%}{%- if t.topic -%}{%- if t.topic != "_topic" -%}
     {%- for unit, u in t -%}{%- if u.unit -%}
   {{ comma() }}
     {
@@ -53,8 +53,8 @@
       "updatedAt": "2015-11-26T00:00:00.000Z",
       "downloadUrl": "http://openmentoring.io/{{u.lang}}/topics/{{u.topic}}/index.json.gz"
     }
-  {% endif -%}{%- endfor -%}
-{%- endif -%}{%- endfor -%}
+  {% endif %}{%- endfor -%}
+{%- endif -%}{%- endif -%}{%- endfor -%}
 {%- endfor -%}
   ]  
 }
