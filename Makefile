@@ -65,10 +65,22 @@ generate:
 	cp web/src/LANGS.md web/build
 	cp web/src/versions web/build
 	cp web/src/README.md web/build
+	# Copy mobile build with zipped topics to web source
+	mkdir -p web/build/dist
+	cp -R mobile/build/* web/build/dist 
 	# TODO: Metalsmith build for print version.
 	profile=journo metalsmith --config print/metalsmith.json
 
-deploy-web: 
+SUBDIRS := $(wildcard mobile/build/*/topics/*)
+ZIPS := $(addsuffix .zip,$(patsubst /,,$(SUBDIRS)))
+
+$(ZIPS) : %.zip : | %
+	zip -r $@ $*/*
+	rm -rf $*
+
+dist: $(ZIPS)
+
+deploy-web: dist
 	@cd web/build; \
 	git init; \
 	git config --local user.name "Travis CI"; \
@@ -94,19 +106,10 @@ deploy-print:
 	git commit -m "Rebuilt book source at ${REV}"; \
 	git push -q upstream HEAD:master
 
-SUBDIRS := $(wildcard mobile/build/*/topics/*)
-ZIPS := $(addsuffix .zip,$(patsubst /,,$(SUBDIRS)))
-
-$(ZIPS) : %.zip : | %
-	zip -r $@ $*/*
-	rm -rf $*
-
-dist: $(ZIPS)
-
 deploy-mobile: dist
 	git clone "https://github.com/iilab/openmentoring-web.git" mobile/build-web; \
 	cp -R mobile/build mobile/build-web/dist; \
-	@cd mobile/build-web; \
+	cd mobile/build-web; \
 	git config --local user.name "Travis CI"; \
 	git config --local user.email "ci@iilab.org"; \
 	git remote add upstream "https://${GH_TOKEN}@github.com/iilab/openmentoring-web.git"; \
@@ -117,4 +120,4 @@ deploy-mobile: dist
 	git commit -m "Rebuilt mobile index at ${REV}"; \
 	git push -q upstream HEAD:master
 
-install: deploy-web deploy-print deploy-mobile
+install: deploy-web deploy-print
