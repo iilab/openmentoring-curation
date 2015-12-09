@@ -2,7 +2,7 @@
   "updatedAt": "{{date}}",
   "items": [
     {% for lang, l in collections.tree -%}
-    {%- for topic, t in l -%}{%- if t.topic -%}{%- if t.topic != "_topic" -%}
+    {%- for topic, t in l|dictsort -%}{%- if t.topic -%}{%- if t.topic != "_topic" -%}
     {
       "slug": "{{ t.topic }}",
       "type": "topic",
@@ -29,8 +29,8 @@
   {%- endfor -%}
 {%- set comma = joiner() -%}
 {%- for lang, l in collections.tree -%}
-  {%- for topic, t in l -%}{%- if t.topic -%}{%- if t.topic != "_topic" -%}
-    {%- for unit, u in t -%}{%- if u.unit -%}
+  {%- for topic, t in l|dictsort -%}{%- if t.topic -%}{%- if t.topic != "_topic" -%}
+    {%- for unit, u in t|dictsort -%}{%- if u.unit -%}
   {{ comma() }}
     {
       "slug": "{{ u.topic }}_{{ u.unit }}",
