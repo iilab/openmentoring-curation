@@ -30,6 +30,7 @@
       "stack": "{{ stack }}",
       "title": "{{ s.title }}",
       "type": "{{ s.type }}",
+      "subtype": "{{ s.subtype }}",
       "category": [ 
         {%- set inin_comma = joiner() -%}
         {%- for prof in s.profile -%}{% if prof %}
