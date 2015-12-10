@@ -21,7 +21,6 @@
     "metalsmith-env": "^2.0.0",
     "metalsmith-filemetadata": "iilab/metalsmith-filemetadata#merge",
     "metalsmith-generate": "iilab/metalsmith-generate",
-    "metalsmith-gzip": "^1.1.0",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.4.2",
     "metalsmith-markdown": "iilab/metalsmith-markdown#pattern_delete",
@@ -32,7 +31,6 @@
     "metalsmith-rename": "^1.0.0",
     "metalsmith-remove": "iilab/metalsmith-remove",
     "metalsmith-replace": "^0.1.1",
-    "metalsmith-writemetadata": "^0.4.5",
     "nunjucks": "^2.1.0"
   }
 }

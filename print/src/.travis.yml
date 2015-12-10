@@ -11,7 +11,7 @@ install:
   - npm install -g npm-registry-client
 script:
   - make 
-after_success:
+after_script:
   - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && make install
 env:
   global:
