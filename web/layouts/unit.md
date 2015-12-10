@@ -4,7 +4,7 @@
     {%- if t.topic == topic -%}
         {%- for u in t -%}
             {%- if u.unit == unit -%}
-                {%- for grouper, list in u|groupby("sub-type") -%}
+                {%- for grouper, list in u|groupby("subtype") -%}
                     {% set done = false %}
                     {%- for card in list -%}
                         {%- if loop.length == 1 -%}
