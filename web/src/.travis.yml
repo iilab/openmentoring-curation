@@ -1,14 +1,10 @@
 sudo: false
 dist: trusty
-language: ruby
+language: node_js
 cache:
   directories:
     - node_modules
 install:
-  - source "$PWD/versions"
-  - rvm use "$RUBY_VERSION" --install --binary
-  - nvm install "$NODE_VERSION"
-  - npm install -g npm
   - npm install -g gitbook-cli
   - npm install -g npm-registry-client
 script:
