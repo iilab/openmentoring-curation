@@ -1,6 +1,9 @@
 sudo: false
 dist: trusty
 language: ruby
+cache:
+  directories:
+    - node_modules
 install:
   - source "$PWD/versions"
   - rvm use "$RUBY_VERSION" --install --binary
