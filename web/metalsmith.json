@@ -59,10 +59,6 @@
       {"pattern": "*/topics/*/*/*-*-android*.md", "metadata": {"array": "true", "platform": [ "android" ] }},
       {"pattern": "*/topics/*/*/*-*-windows*.md", "metadata": {"array": "true", "platform": [ "windows" ] }}
     ],
-    "metalsmith-markdown": {
-      "pattern": "*/topics/*/*/*-*.md",
-      "delete_files": false
-    },
     "metalsmith-many-more": {
       "pattern": "*/topics/*/*/*-*.html",
       "key": "cards",

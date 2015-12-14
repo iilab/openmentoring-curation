@@ -10,16 +10,16 @@
                         {%- if loop.length == 1 -%}
                         {%- set done = true -%}
 {{ card.contents | safe }}
-***
-                        {%- elif card.profile == profile and not done-%}
+
+{% elif card.profile == profile and not done-%}
                         {%- set done = true -%}
 {{ card.contents | safe }}
-***
-                        {%- elif not card.profile and not done -%}
+
+{% elif not card.profile and not done -%}
                         {%- set done = true -%}
 {{ card.contents | safe }}
-***
-                        {%- endif -%}
+
+{% endif -%}
                     {%- endfor -%}
                 {%- endfor -%}
             {%- endif -%}

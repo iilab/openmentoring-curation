@@ -34,6 +34,18 @@ serve: generate
 	@mv web/build/citizen/_book web/build && mv web/build/journo/_book web/build/_book/journo && mv web/build/hrd/_book web/build/_book/hrd;
 	cd web/build/_book; http-server .
 
+serve-journo: 
+	profile=journo metalsmith --config web/metalsmith.json
+	mv web/build web/build-journo
+	mkdir web/build
+	mv web/build-journo web/build/journo
+	cp -R web/src/journo/* web/build/journo
+	cp web/src/book.json web/build/journo
+	cp web/src/LANGS.md web/build/journo
+	cd web/build/journo && gitbook install .
+	cd web/build/journo && gitbook build .
+	cd web/build/journo/_book; http-server .
+
 generate: 
 	# Metalsmith build for mobile content (for now only index.json)
 	metalsmith --config mobile/metalsmith.json
