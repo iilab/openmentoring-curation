@@ -64,6 +64,7 @@
       "delete_files": false
     },
     "metalsmith-many-more": {
+      "separator": "<br>",
       "pattern": "*/topics/*/*/*-*.html",
       "key": "cards",
       "trim": true,
