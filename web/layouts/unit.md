@@ -19,6 +19,9 @@
                         {%- set done = true -%}
 {{ card.contents | safe }}
 
+{% else -%}
+{{ card.contents | safe }}
+
 {% endif -%}
                     {%- endfor -%}
                 {%- endfor -%}
