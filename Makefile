@@ -48,14 +48,14 @@ serve-journo:
 
 generate:
 	# Metalsmith build for mobile content (for now only index.json)
-	metalsmith --config mobile/metalsmith.json
+	DEBUG=* metalsmith --config mobile/metalsmith.json
 	# profile=hrd metalsmith --config web/metalsmith.json
   # Metalsmith build for different web site profiles (building as gitbook source)
-	profile=journo metalsmith --config web/metalsmith.json
+	DEBUG=* profile=journo metalsmith --config web/metalsmith.json
 	mv web/build web/build-journo
-	profile=hrd metalsmith --config web/metalsmith.json
+	DEBUG=* profile=hrd metalsmith --config web/metalsmith.json
 	mv web/build web/build-hrd
-	metalsmith --config web/metalsmith.json
+	DEBUG=* metalsmith --config web/metalsmith.json
 	mv web/build web/build-citizen
 	mkdir web/build
 	mv web/build-journo web/build/journo
@@ -78,7 +78,7 @@ generate:
 	cp web/src/versions web/build
 	cp web/src/README.md web/build
 	# TODO: Metalsmith build for print version.
-	profile=journo metalsmith --config print/metalsmith.json
+	DEBUG=* profile=journo metalsmith --config print/metalsmith.json
 
 SUBDIRS := $(wildcard mobile/build/*/topics/*)
 ZIPS := $(addsuffix .zip,$(patsubst /,,$(SUBDIRS)))
