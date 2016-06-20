@@ -29,6 +29,7 @@
     {
       "stack": "{{ stack }}",
       "title": "{{ s.title }}",
+      "unit": "{{ u.unit }}",
       "images": [
         {%- set comma = joiner() -%}
         {%- for image in s.images -%}
