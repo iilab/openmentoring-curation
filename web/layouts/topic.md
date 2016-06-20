@@ -1,5 +1,7 @@
 # {{ title }}
 
+{{ "![](" + image + ")" if image else "" }}
+
 {{ contents }}
 
 {% for l in cards -%}
