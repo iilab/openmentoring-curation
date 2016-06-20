@@ -29,9 +29,15 @@
     {
       "stack": "{{ stack }}",
       "title": "{{ s.title }}",
+      "images": [
+        {%- set comma = joiner() -%}
+        {%- for image in s.images -%}
+            {{ comma() }} "{{ image }}"
+        {%- endfor -%}
+      ],
       "type": "{{ s.type }}",
       "subtype": "{{ s.subtype }}",
-      "category": [ 
+      "category": [
         {%- set inin_comma = joiner() -%}
         {%- for prof in s.profile -%}{% if prof %}
           {{ inin_comma() }} "profile:{{ prof }}"{% endif %}{%- endfor -%}

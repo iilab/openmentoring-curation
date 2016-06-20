@@ -6,6 +6,7 @@
     {
       "slug": "{{ t.topic }}",
       "type": "topic",
+      "image": "{{ t.image }}",
       "title": "{{ t.title }}",
       "parentTitle": "",
       "locale": "{{ t.lang }}",
@@ -56,5 +57,5 @@
   {% endif %}{%- endfor -%}
 {%- endif -%}{%- endif -%}{%- endfor -%}
 {%- endfor -%}
-  ]  
+  ]
 }
