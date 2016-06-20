@@ -40,6 +40,7 @@
     },
     "metalsmith-filemetadata": [
       {"pattern": "*/topics/*/*/*-intro*.md", "preserve": "true", "metadata": {"container": "stack", "type": "card", "subtype": "intro", "title": "Introduction"}},
+      {"pattern": "*/topics/*/*/*-takeaways*.md", "preserve": "true", "metadata": {"container": "stack", "type": "card", "subtype": "takeaways", "title": "Takeaways"}},
       {"pattern": "*/topics/*/*/*-scenario*.md", "preserve": "true", "metadata": {"container": "stack", "type": "card", "subtype": "scenario", "title": "Scenario"}},
       {"pattern": "*/topics/*/*/*-learn.md*", "preserve": "true", "metadata": {"container": "stack", "type": "card", "subtype": "learn", "title": "Learn"}},
       {"pattern": "*/topics/*/*/*-test*.md", "preserve": "true", "metadata": {"container": "stack", "type": "activity", "subtype": "test", "title": "Test"}},
@@ -77,7 +78,7 @@
     "metalsmith-layouts": {
       "engine": "nunjucks",
       "default": "default.md",
-      "directory": "mobile/layouts"       
+      "directory": "mobile/layouts"
     },
     "metalsmith-remove": [
       {"pattern": "*/news/**"},
