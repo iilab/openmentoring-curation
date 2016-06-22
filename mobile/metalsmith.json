@@ -33,7 +33,6 @@
         "pattern": ":lang/topics/:topic/index.md"
       }
     },
-    "metalsmith-debug": true,
     "metalsmith-copy": {
       "pattern": "*/topics/*/*/index.md",
       "extension": ".json"
@@ -75,10 +74,12 @@
       {"action": "merge", "source": [ "topics", "units", "cards" ], "target": "tree", "ignore": [ "stats", "previous", "next", "mode", "collection" ]},
       {"action": "up", "source": "tree", "fields": [ "protect", "profile", "platform"], "ignore": [ "contents", "stats", "previous", "next", "mode", "collection" ]}
     ],
+    "metalsmith-debug": true,
     "metalsmith-layouts": {
       "engine": "nunjucks",
       "default": "default.md",
-      "directory": "mobile/layouts"
+      "directory": "mobile/layouts",
+      "pattern": "**/*.json"
     },
     "metalsmith-remove": [
       {"pattern": "*/news/**"},
