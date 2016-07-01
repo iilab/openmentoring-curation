@@ -28,6 +28,8 @@
   {%- for item in crd %}{% if not item=='' %}{{ in_comma() }}
     {
       "stack": "{{ stack }}",
+      "stack-index": "{{ loop.index }}",
+      "stack-length": "{{ loop.length }}",
       "title": "{{ s.title }}",
       "unit": "{{ u.unit }}",
       "images": [
